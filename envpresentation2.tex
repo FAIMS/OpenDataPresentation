@@ -1,0 +1,270 @@
+\startenvironment envpresentation2
+%Context Environment for a basic Full Block Letter with Letterhead
+\enableregime [utf]
+\mainlanguage [en]
+\definepapersize[sheet][width=1280px, height=960px]
+\setuppapersize[sheet][sheet]
+\setupexternalfigures[directory={img, 
+    /home/ubuntu/EGU2016-Presentation, 
+    /home/ubuntu/ConTeXt/img}]
+\usemodule[simplefonts]
+\setmainfont[Adventor][expansion=quality,protrusion=quality]
+\setupcolors[state=start]
+
+
+\definecolor[faimsblue][h=1B3E93]
+\definecolor[faimsorange][h=F68E1E]
+
+\setuplayout[
+    backspace=.05\pagewidth,
+    header=0pt,
+    footer=.02\pageheight,
+    topspace=.185\pageheight,
+    cutspace-.1\pagewidth,
+    width=.8\pagewidth,
+    height=.798\pageheight,
+    bottomspace=.8cm,
+    bottom=12pt   
+    ]
+
+
+\setuppagenumbering[location=]
+%\showframe
+
+\startluacode
+
+userdata = userdata or {}
+
+function userdata.makeqr(txt,ht)
+  foo = os.tmpname()..".png"
+  os.execute("qrencode "..txt.." -s 20 -d 600 -o " .. foo)
+
+  context.externalfigure(
+    {foo},{height=ht.."mm"})
+end 
+
+
+\stopluacode
+
+\def\makeqr#1[#2]%
+  {\ctxlua{userdata.makeqr([==[#1]==],[==[#2]==])}}
+
+\definelayer[footy]  % name of the layer
+    [x=0mm, y=265mm,  % from upper left corner of paper
+     width=\paperwidth, height=10mm, state=repeat] % let the layer cover the full paper
+
+
+\setupbackgrounds[page][background=footy, state=repeat]
+
+\setlayerframed[footy][frame=off, x=0mm, y=0mm, align=right, height=.175\pageheight, width=\pagewidth, background=color, backgroundcolor=faimsblue]{}
+
+
+\setlayerframed[footy][frame=off, x=0mm, y=.147\pageheight, align=right, height=.003\pageheight, width=\pagewidth, background=color,backgroundcolor=faimsorange, align=flushright, depth=10mm]{}
+
+  %\setlayerframed[footy][frame=off, x=00mm, y=234mm, align=right, height=30mm, width=919mm, align=flushright]
+  %{\color[white]{\setupbodyfont[30pt]For More Information on this poster: }}
+
+  %\setlayerframed[footy][frame=off, x=00mm, y=184mm, align=right, height=75mm, width=970mm, align=flushright]
+  %{\externalfigure[fedarch.png][width=41mm]}
+
+
+\setlayerframed[footy][frame=off, x=.895\pagewidth, y=.15\pageheight, align=center]
+  {\color[white]{\setupbodyfont[14pt]\setupwhitespace[none]www.faims.edu.au}
+    }
+
+\setlayerframed[footy][frame=off, x=.84\pagewidth, y=.15\pageheight, align=center]
+  {\color[white]{\setupbodyfont[21pt]\setupwhitespace[none]\externalfigure[by-sa.eps][ frame=off, type=pdf, height=.022\pageheight]{}}
+    }
+
+
+\setlayerframed[footy][frame=off, x=.895\pagewidth, y=.005\pageheight, align=right]
+  {\externalfigure[faimsLogo.pdf][ frame=off, type=pdf, width=.1\pagewidth]{}}
+
+
+\setlayerframed[footy][frame=off, x=.895\pagewidth, y=.87\pageheight, align=right]
+  {\externalfigure[CSIRO_original.jpg][ frame=off, type=pdf, width=.1\pagewidth]{}}
+
+\setlayerframed[footy][frame=off, x=.893\pagewidth, y=.0405\pageheight, align=right, background=color, backgroundcolor=faimsblue, width=10px, height=.0605\pageheight]{}
+
+\setlayerframed[footy][frame=off, x=.895\pagewidth, y=.15\pageheight, align={stretch, verytolerant, hz, hanging},]
+  {\setupbodyfont[11pt]\setupinterlinespace[line=2ex]\sc\color[faimsblue]{
+
+
+
+
+
+
+
+\setvariables[namespace][blank=.015\pagewidth]
+
+
+
+\blank[\getvariable{namespace}{blank}]                
+\externalfigure[ARC_stacked.eps]
+                [width=.1\pagewidth]
+
+\blank[.005\pagewidth]                
+
+LIEF Award: \hfill LE140100151
+
+
+\blank[.02\pagewidth]                
+\externalfigure[MQ_INT_HOR_RGB_POS_Borderless.pdf]
+                [width=.1\pagewidth]
+\blank[\getvariable{namespace}{blank}]                
+\externalfigure[unswL.eps]
+                [width=.1\pagewidth]
+\blank[\getvariable{namespace}{blank}]                
+               \externalfigure[UQlogoC.eps]
+                [width=.092\pagewidth]
+\blank[\getvariable{namespace}{blank}]                                   
+          \externalfigure[usyd.png]
+                [width=.07\pagewidth]
+\blank[\getvariable{namespace}{blank}]                                    
+          \externalfigure[LaTrobe.png]
+                [width=.09\pagewidth]
+\blank[\getvariable{namespace}{blank}]                                      
+          \externalfigure[flindersL.eps]
+                [width=.1\pagewidth]
+\blank[\getvariable{namespace}{blank}]                                       
+          \externalfigure[SCU-Logo.eps]
+                [width=.1\pagewidth]
+          
+
+
+
+
+\blank[\getvariable{namespace}{blank}]                                       
+\setvariables[namespace][ht2=.045\pagewidth]
+%\externalfigure[nectar.eps]
+%      [width=\getvariable{namespace}{ht2}]
+%\blank[\getvariable{namespace}{blank}]                                       
+%
+%\externalfigure[Intersect_Logo_CMKY.eps]
+%      [width=\getvariable{namespace}{ht2}]
+%\blank[\getvariable{namespace}{blank}]                                       
+%
+%\externalfigure[tdar-logo.png]
+%      [width=\getvariable{namespace}{ht2}]
+%\blank[\getvariable{namespace}{blank}]                                       
+%
+%\externalfigure[ChicagoSquare.eps]
+%      [width=\getvariable{namespace}{ht2}]
+%\blank[\getvariable{namespace}{blank}]                                       
+%
+%\externalfigure[oclong.eps]
+%      [width=\getvariable{namespace}{ht2}]
+%\blank[\getvariable{namespace}{blank}]                                       
+%
+%\externalfigure[ADSreversedLogoRed.eps]
+%      [width=\getvariable{namespace}{ht2}]
+
+\setupcombinations[location=middle, distance=.01\pagewidth, after=]
+          \startcombination[2*3]          
+          {\externalfigure[nectar.eps]
+                [width=\getvariable{namespace}{ht2}]}{}
+          {\externalfigure[Intersect_Logo_CMKY.eps]
+                [width=\getvariable{namespace}{ht2}]}{}
+          {\externalfigure[tdar-logo.png]
+                [width=\getvariable{namespace}{ht2}]}{}
+          {\externalfigure[ChicagoSquare.eps]
+                [width=\getvariable{namespace}{ht2}]}{}
+          {\externalfigure[oclong.eps]
+                [width=\getvariable{namespace}{ht2}]}{}
+          {\externalfigure[ADSreversedLogoRed.eps]
+                [width=\getvariable{namespace}{ht2}]}{}
+\stopcombination
+
+
+
+
+  }
+}
+
+
+
+
+\setlayerframed[footy]  % name of the layer
+    [frame=off]  % placement (from upper left corner of the layer)
+    {\framed[frame=off, topframe=off, width=\paperwidth, height=1080mm]{
+
+
+}}  % the actual contents of the layer
+
+\setupwhitespace[big]
+
+\placefigure[none, right, margin, top]{}{
+\framed[width=85mm, height=230mm, frame=off]{}
+}
+
+
+
+
+\definefontfeature
+  [default]
+  [default]
+  [protrusion=quality,expansion=quality]
+
+\setupalign[hz,hanging]
+
+
+%% Titles!
+\unprotect
+\def\doctitle#1{\gdef\@title{#1}}
+\def\docversion#1{\gdef\@docver{#1}}
+\def\docdate#1{\gdef\@docdate{#1}}
+\def\docauthor#1{\gdef\@docauthor{#1}}
+\docdate{\date}
+\docversion{1.0}
+
+\def\maketitle{%
+  %\startalignment[left]
+    \blank[force,2*big]
+      {\tfd \@title}
+    \blank[2*medium]
+      {\tfa \date[\@docdate][day,~,month,~,year]}
+    \blank
+      {\tfx \@docver}
+    \blank[3*medium]
+  %\stopalignment
+}
+
+
+\protect
+\startsetups[doc:footer]
+{~\hfill \llap{Slide: \pagenumber/\lastpagenumber~}}
+\stopsetups
+
+% Use the setup
+\setupfootertexts[\setup{doc:header}]
+
+%\usemodule[pre-original]
+%\setupheadertexts[{\color[black]{\tfxx \midaligned{\rlap{\currentdate} \hfill Using the FAIMS Mobile App for field data recording \hfill \llap{Brian Ballsun-Stanton, Jens Klump, Shawn Ross}}}}]
+%\setupheader[state=start]
+
+\setuphead[section][placehead=yes, page=yes, number=no, align=middle, style={\tfc}]
+\setuphead[subsection][number=no]
+
+
+\setupinteraction
+  [page=yes,
+   color=faimsblue,
+   contrastcolor=faimsorange,
+   menu=on,
+   state=start]
+
+\setupsubpagenumber
+  [way=bytext,
+   state=start]
+
+
+\startinteractionmenu[bottom]
+
+
+{\interactionbar[alternative=f,width=\makeupwidth,height=2ex]}
+\stopinteractionmenu
+
+\setupbodyfont[32pt]
+
+\stopenvironment
+
